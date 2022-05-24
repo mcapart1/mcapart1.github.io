@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>MCA Part 1 Practical Guide</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <style>
+      .code {
+        height: auto;
+        width: 50%;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">MCA Part 1</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="include\c.html"
+              >C <span class="sr-only disabled">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="unix.html">UNIX</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ds.html">Data and File Structure</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="row">
+      <div class="code col-md-6">
+        <h4>Program to Check Prime Number</h4>
+        <pre>
+            <!--code Tag starts here -->
+            <code>
+#include < stdio.h>
+int main() {
+  int n, i, flag = 0;
+  printf("Enter a positive integer: ");
+  scanf("%d", &n);
+  if (n == 0 || n == 1)
+    flag = 1;
+  for (i = 2; i <= n / 2; ++i) {
+    if (n % i == 0) {
+      flag = 1;
+      break;
+    }
+  }
+  if (flag == 0)
+    printf("%d is a prime number.", n);
+  else
+    printf("%d is not a prime number.", n);
+  return 0;
+}
+            </code>
+            <!--code Tag ends here -->
+        </pre>
+      </div>
+      <div class="code col-md-6">
+        <h4>Check Armstrong Number of n digits</h4>
+        <pre>
+        <!--code Tag starts here -->
+        <code>
+#include < math.h>
+#include < stdio.h>
+int main() {
+   int num, originalNum, remainder, n = 0;
+   float result = 0.0;
+   printf("Enter an integer: ");
+   scanf("%d", &num);
+   originalNum = num;
+   for (originalNum = num; originalNum != 0; ++n) {
+       originalNum /= 10;
+   }
+   for (originalNum = num; originalNum != 0; originalNum /= 10) {
+       remainder = originalNum % 10;
+      result += pow(remainder, n);
+   }
+   if ((int)result == num)
+    printf("%d is an Armstrong number.", num);
+   else
+    printf("%d is not an Armstrong number.", num);
+   return 0;
+}
+        </code>
+        <!--code Tag ends here -->
+    </pre>
+      </div>
+      <div class="code col-md-6">
+        <h4>Program to Check Palindrome</h4>
+        <pre>
+              <code>
+#include < stdio.h>
+int main() {
+  int n, reversed = 0, remainder, original;
+    printf("Enter an integer: ");
+    scanf("%d", &n);
+    original = n;
+    while (n != 0) {
+        remainder = n % 10;
+        reversed = reversed * 10 + remainder;
+        n /= 10;
+    }
+    if (original == reversed)
+        printf("%d is a palindrome.", original);
+    else
+        printf("%d is not a palindrome.", original);
+    return 0;
+}
+              </code>
+          </pre>
+      </div>
+      <div class="code col-md-6">
+        <h4>Palindrome String Check</h4>
+        <pre>
+            <code>
+#include < stdio.h>
+#include < string.h>
+int main(){
+    char string1[20];
+    int i, length;
+    int flag = 0;
+    printf("Enter a string:");
+    scanf("%s", string1);
+    length = strlen(string1);
+    for(i=0;i < length ;i++){
+        if(string1[i] != string1[length-i-1]){
+            flag = 1;
+            break;
+           }
+        }
+    if (flag) {
+        printf("%s is not a palindrome", string1);
+    }    
+    else {
+        printf("%s is a palindrome", string1);
+    }
+    return 0;
+}
+          </code>
+        </pre>
+      </div>
+      <div class="code col-md-6">
+        <h4>Factorial with recursion</h4>
+        <pre>
+              <code>
+#include < stdio.h>
+int fact(int n);    
+int main() {
+    int x, i;
+    printf("Enter a value for x: ");
+    scanf("%d", &x);
+    i = fact(x);
+    printf("
+    Factorial of %d is %d", x, i);
+    return 0;
+}
+int fact(int n) {
+    if (n <= 0) {
+        return (1);
+    } else {
+        return (n * fact(n - 1));
+    }
+}
+              </code>
+          </pre>
+      </div>
+      <div class="code col-md-6">
+        <h4>Leap Year</h4>
+        <pre>
+              <code>
+#include < stdio.h>
+int main()
+{    
+    int year;      
+    printf("Enter a year to check if it is a leap year\n");
+    scanf("%d", &year);     
+    if ( year%400 == 0)      
+    printf("%d is a leap year.\n", year);  
+    else if ( year%100 == 0)      
+    printf("%d is not a leap year.\n", year); 
+    else if ( year%4 == 0 )      
+    printf("%d is a leap year.\n", year);
+    else      
+    printf("%d is not a leap year.\n", year);      
+    return 0;    
+}
+              </code>
+          </pre>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
